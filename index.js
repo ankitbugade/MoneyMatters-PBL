@@ -40,6 +40,12 @@ app.get("/sip",async(req,res)=>{
   console.log("sip");
 });
 
+app.get("/lumpsum",async(req,res)=>{
+  res.render("lumpsum.ejs");
+  
+  console.log("lumpsum");
+});
+
 app.get("/signup",(req,res)=>{
   res.render("signup.ejs");
 });
