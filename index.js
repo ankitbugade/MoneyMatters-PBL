@@ -7,14 +7,14 @@ const app = express();
 const port = 3000;
 env.config();
 
-const db = new pg.Client({
-  user: process.env.PG_USER,
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  password: process.env.PG_PASSWORD,
-  port: process.env.PG_PORT,
-});
-db.connect();
+// const db = new pg.Client({
+//   user: process.env.PG_USER,
+//   host: process.env.PG_HOST,
+//   database: process.env.PG_DATABASE,
+//   password: process.env.PG_PASSWORD,
+//   port: process.env.PG_PORT,
+// });
+// db.connect();
 
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -42,6 +42,12 @@ app.get("/sip",async(req,res)=>{
 
 app.get("/lumpsum",async(req,res)=>{
   res.render("lumpsum.ejs");
+  
+  console.log("lumpsum");
+});
+
+app.get("/ppf",async(req,res)=>{
+  res.render("ppf.ejs");
   
   console.log("lumpsum");
 });
