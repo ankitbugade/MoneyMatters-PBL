@@ -46,6 +46,19 @@ app.get("/lumpsum",async(req,res)=>{
   console.log("lumpsum");
 });
 
+app.get("/ssy",async(req,res)=>{
+  res.render("ssy.ejs");
+  
+  console.log("ssy");
+});
+
+
+app.get("/gst",async(req,res)=>{
+  let exclusion = true;
+  res.render("gst.ejs",{ exclusion });
+  console.log("gst");
+});
+
 app.get("/signup",(req,res)=>{
   res.render("signup.ejs");
 });

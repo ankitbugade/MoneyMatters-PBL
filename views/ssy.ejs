@@ -19,19 +19,20 @@
   <!-- calcluator -->
     <div class="container grid p-5">
         <div class="calculator">
-            <h2 class="calcluatorName">Lumpsum Calculator</h2>
+            <h2 class="calcluatorName">Sukanya Samridhi Yojana Calculator</h2>
             <form id="interestForm">
-                <label for="principal">Principal Amount:</label>
-                <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter principal amount">
-                <br/> <input type="range"  value="25000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="principal " min="500" max="1000000" >
+                <span style="color: rgb(87, 87, 87); font-size: large;">current SSY returns: 8.2%</span><br><br>
+                <label for="principal">Yearly Investment:</label>
+                <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter yearly invested amount">
+                <br/> <input type="range"  value="2000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="principal " min="250" max="150000" >
                 <br><br>
-                <label for="rate">Rate of Interest (% per annum):</label>
+                <!-- <label for="rate">Rate of Interest (% per annum):</label>
                 <input type="number" id="rate" name="rate" oninput="rInputHandler(event), calculate(event)" value="12" placeholder="Enter rate of interest">
                 <br/><input type="range" name="rRate" value="12" oninput="rRangeHandler(event)" onchange=" calculate(event)"  id="rRate" min="1" max="30" >
-                <br><br>
-                <label for="time">Time (years):</label>
+                <br><br> -->
+                <label for="time">Start period(year):</label>
                 <input type="number" id="time" name="time" oninput="tInputHandler(event),calculate(event)" value="10" placeholder="Enter time in years">
-                <br/><input type="range" name="rTime" value="10" oninput="tRangeHandler(event)" onchange=" calculate(event)"  id="rTime" min="1" max="40" >
+                <br/><input type="range" name="rTime" value="10" oninput="tRangeHandler(event)" onchange=" calculate(event)"  id="rTime" min="2020" max="2030" >
                 <br><br><hr>
                 <div class="output">
                   <label for="A">Invested Amount : &#8377</label>
@@ -117,11 +118,11 @@
         <div class=" calculatorList col-md-4 col-xl-3 mb-3"> <!-- added class for width -->
             <h5 >Other Calculators</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2 pt-4"><a href="/sip" class="nav-link p-0 text-body-secondary">SIP Calculator</a></li>
-              <li class="nav-item mb-2"><a href="/ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
-              <li class="nav-item mb-2"><a href="/epf" class="nav-link p-0 text-body-secondary">EPF Calculator</a></li>
-              <li class="nav-item mb-2"><a href="/gst" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
-              <li class="nav-item mb-2"><a href="/swp" class="nav-link p-0 text-body-secondary">SWP Calculator</a></li>
+              <li class="nav-item mb-2 pt-4"><a href="#" class="nav-link p-0 text-body-secondary">EMI Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">EPF Calculator</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">SWP Calculator</a></li>
             </ul>
           </div>
 
@@ -146,10 +147,10 @@ p.addEventListener('change', (event) => {
   amt = event.target.value;
 });
 
-let r = document.querySelector("#rate");
-r.addEventListener('change', (event) => {
-  rate = event.target.value;
-});
+// let r = document.querySelector("#rate");
+// r.addEventListener('change', (event) => {
+//   rate = event.target.value;
+// });
 
 let t = document.querySelector("#time");
 t.addEventListener('change', (event) => {
@@ -157,7 +158,7 @@ t.addEventListener('change', (event) => {
 });
 
 let pRange = document.querySelector("#rPrincipal")
-let rRange = document.querySelector("#rRate") 
+// let rRange = document.querySelector("#rRate") 
 let tRange = document.querySelector("#rTime")
 
 let investedAmt = document.querySelector("#A")
@@ -169,9 +170,9 @@ let totalValue = document.querySelector("#C")
 function pRangeHandler(event){
   p.value = event.target.value;
 }
-function rRangeHandler(event){
-  r.value = event.target.value;
-}
+// function rRangeHandler(event){
+//   r.value = event.target.value;
+// }
 function tRangeHandler(event){
   t.value = event.target.value;
 }
@@ -180,16 +181,16 @@ function tRangeHandler(event){
 function pInputHandler(event){
   pRange.value = event.target.value;
 }
-function rInputHandler(event){
-  rRange.value = event.target.value;
-}
+// function rInputHandler(event){
+//   rRange.value = event.target.value;
+// }
 function tInputHandler(event){
   t.value = event.target.value;
 }
 
 
 amt = p.value;
-  rate = r.value;
+  rate = 8.2;
   time = t.value;
 
   amt = parseFloat(amt);
@@ -199,12 +200,12 @@ amt = p.value;
   let i = rate / 100;
   console.log(amt,rate,time);
   //P × ({[1 + i]^n - 1} / i) × (1 + i)
-  let n = time;  
- let a = Math.pow((1+i),(time));
+  let n = time;
+ let a = Math.pow((1+i),(n));
   M = amt*a;
    totalAmount = amt;
 
-  let investedamount = (Math.round(amt));
+  let investedamount = (Math.round(amt*time));
   let estReturns = (Math.round(M-totalAmount));
 
   investedAmt.value = (investedamount).toLocaleString('en-in')
@@ -235,7 +236,7 @@ function calculate() {
   event.preventDefault();
   console.log("workingg",r.value,t.value,amt);
   amt = p.value;
-  rate = r.value;
+  rate = 8.2;
   time = t.value;
 
   amt = parseFloat(amt);
@@ -246,11 +247,11 @@ function calculate() {
   console.log(amt,rate,time);
   //P × ({[1 + i]^n - 1} / i) × (1 + i)
   let n = time*12;
- let a = Math.pow((1+i),(n));
-  M = amt*a;
+ let a = Math.pow((1+i),(n))-1;
+  M = amt*(a/i)*(1+i);
    totalAmount = amt*n;
 
-  let investedamount = (Math.round(amt));
+  let investedamount = (Math.round(amt*12*time));
   let estReturns = (Math.round(M-totalAmount));
 
   investedAmt.value = (investedamount).toLocaleString('en-in')
