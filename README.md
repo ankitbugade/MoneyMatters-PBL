@@ -1,2 +1,2 @@
 Money Matters 
-Calculate your persinal finances
+Calculate your personal finances
