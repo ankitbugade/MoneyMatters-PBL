@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    
+  <!-- Title -->
+  <%- include("header.ejs") %>
+                                                                                          
+  <!-- calcluator -->
+    <div class="container grid p-5">
+        <div class="calculator">
+            <h2 class="calcluatorName">GST Calculator</h2>
+            <form id="interestForm">
+                <label for="principal">Amount:</label>
+                <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter principal amount">
+                <br/> <input type="range"  value="25000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="principal " min="500" max="1000000" >
+                <br><br>
+                <label for="rate">GST Rate :</label>
+                <select name="rate" id="rate" oninput="rInputHandler(event), calculate(event)">
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="12">12</option>
+                  <option value="18">18</option>
+                  <option value="28">28</option>
+                </select>
+                
+                <br><br>
+                <hr>
+                <div class="output">
+                  <label for="A">GST : &#8377</label>
+                  <input readonly value="" class="result"  id="A" class="principal"/><br>
+                  <br>
+                  <label for="B">Total Value: &#8377</label>
+                  <input readonly value="" class="result" id="B" class="rate"/><br>
+                  <br>
+                </div>
+              
+              </form>
+
+
+                <div class="chart" height="250" width="250">
+                    <canvas id="myChart" width="250" height="250"></canvas>
+                </div>
+            
+
+            <div class="container mt-5">
+                <div class="info">
+                     <h4> SIP Calculator - Systematic Investment Plan Calculator </h4> 
+                        Prospective investors can think that SIPs and mutual funds are the same. However, SIPs are merely a method of investing in mutual funds, the other method being a lump sum. A SIP calculator is a tool that helps you determine the returns you can avail when parking your funds in such investment tools. Systematic Investment Plan or SIP is a process of investing a fixed sum of money in mutual funds at regular intervals. SIPs usually allow you to invest weekly, quarterly, or monthly.<br><br>
+                </div> 
+                <div class="info"> 
+                    <h4>What is a SIP Calculator?</h4>
+                    A SIP calculator is a simple tool that allows individuals to get an idea of the returns on their mutual fund investments made through SIP. SIP investments in mutual funds have become one of the most popular investment options for millennials lately.<br>
+                    These mutual fund sip calculators are designed to give potential investors an estimate on their mutual fund investments. However, the actual returns offered by a mutual fund scheme varies depending on various factors. The SIP calculator does not provide clarification for the exit load and expense ratio (if any).<br>
+                    This calculator will calculate the wealth gain and expected returns for your monthly SIP investment. Indeed, you get a rough estimate on the maturity amount for any of your monthly SIP, based on a projected annual return rate.<br><br>
+                </div>
+                <div class="info"> 
+                    <h4>How can a SIP return calculator help you?</h4>
+                    SIPs are a more lucrative mode of investing funds compared to a lump sum amount according to several mutual fund experts. It helps you become financially disciplined and create a habit of savings that can benefit you in the future.<br>
+                    A SIP calculator online is a beneficial tool, which shows the estimated returns you will earn after the investment tenure.<br>
+                    Few of the benefits of SIP calculators include -<br>
+                    <ol>
+                        <li>Assists you to determine the amount you want to invest in.</li>
+                        <li>Tells you the total amount you have invested.</li>
+                        <li>Gives an estimated value of the returns.</li>
+                    </ol>
+                </div> 
+                <div class="info"> 
+                    <h4>What is a SIP Calculator?</h4>
+                    A SIP plan calculator works on the following formula -<br><br>
+    
+                    M = P × ({[1 + i]^n - 1} / i) × (1 + i).<br><br>
+    
+                    In the above formula -<br>
+                    <ul>
+                        <li>M is the amount you receive upon maturity.</li>
+                        <li>P is the amount you invest at regular intervals.</li>
+                        <li>n is the number of payments you have made.</li>
+                        <li>i is the periodic rate of interest.</li>
+                    </ul><br>               
+                    Take for example you want to invest Rs. 1,000 per month for 12 months at a periodic rate of interest of 12%.<br>
+                    then the monthly rate of return will be 12%/12 = 1/100=0.01<br>
+                    Hence, M = 1,000X ({[1 +0.01 ]^{12} - 1} / 0.01) x (1 + 0.01)<br>
+                    which gives Rs 12,809 Rs approximately in a year.<br><br>
+                    The rate of interest on a SIP will differ as per market conditions. It may increase or decrease, which will change the estimated returns.<br><br>
+                </div>
+                <div class="info"> 
+                    <h4>How to use systematic investment plan calculator?</h4>
+                    You can use the SIP amount calculator from  within a few clicks.<br>
+                    Just enter the monthly invested amount (the amount for which you have started the SIP), the number of years for which you want to stay invested, and the expected rate of return.<br>
+                    As soon as you input the value, the calculator will show you the estimated amount you can avail after your investment tenure is complete.<br><br>
+                </div>
+                <div class="info"> 
+                    <h4>Advantages of using systematic investment plan calculator</h4>
+                     offers the best SIP calculator, which provides the following advantages -<br>
+                    <ul>
+                        <li>Plan your investment based on the amount and tenure.</li>
+                        <li>It helps you compute an estimation of the total value of investments at the end of your SIP tenure.</li>
+                        <li>Shows accurate results and helps you save time required during a manual calculation.</li>
+                        <li>A systematic investment plan calculator ensures that your savings portfolio is as per your requirements and financial needs.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class=" calculatorList col-md-4 col-xl-3 mb-3"> <!-- added class for width -->
+            <h5 >Other Calculators</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2 pt-4"><a href="#" class="nav-link p-0 text-body-secondary">EMI Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">EPF Calculator</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">SWP Calculator</a></li>
+            </ul>
+          </div>
+
+    </div>
+
+    
+    <%- include("footer.ejs") %>
+
+    <script type="module" src="acquisitions.js"></script>
+  <script>
+    // Data
+   // Data
+let amt = 100;
+let rate = 5;
+let time = 10;
+let M 
+let totalAmount
+
+
+let p = document.querySelector("#principal");
+p.addEventListener('change', (event) => {
+  amt = event.target.value;
+});
+
+let r = document.querySelector("#rate");
+r.addEventListener('change', (event) => {
+  rate = event.target.value;
+});
+
+
+let pRange = document.querySelector("#rPrincipal")
+let rRange = document.querySelector("#rRate") 
+
+let GST = document.querySelector("#A")
+let totalAmt = document.querySelector("#B") 
+
+
+
+function pRangeHandler(event){
+  p.value = event.target.value;
+}
+function rRangeHandler(event){
+  r.value = event.target.value;
+}
+
+
+
+function pInputHandler(event){
+  pRange.value = event.target.value;
+}
+function rInputHandler(event){
+  rRange.value = event.target.value;
+}
+
+
+  principal = p.value;
+  rate = r.value;
+
+  amt = parseFloat(amt);
+  rate = parseFloat(rate);
+  
+  //P × ({[1 + i]^n - 1} / i) × (1 + i)
+  let g = amt*(rate/100); 
+  let total = (Math.round(g+amt));
+
+  gst.value = (g).toLocaleString('en-in')
+  amt.value = (total).toLocaleString('en-in')
+  totalValue.value = (Math.round(parseFloat(g) + parseFloat(total))).toLocaleString('en-in');
+  
+
+function updateChart() {
+  const newData = {
+    labels: ['est. ret', 'principal amount'],
+    datasets: [{
+      label: 'My Doughnut Chart',
+      data: [g, total],
+      backgroundColor: [
+        'rgb(50, 50, 50)' ,
+        'rgb(200, 200, 200)'
+      ],
+      borderWidth: 1
+    }]
+  };
+
+  myChart.data = newData; 
+  myChart.update(); 
+}
+
+
+function calculate() {
+  event.preventDefault();
+  console.log("workingg",r.value,t.value,amt);
+  amt = p.value;
+  rate = r.value;
+  time = t.value;
+
+  amt = parseFloat(amt);
+  rate = parseFloat(rate);
+  time = parseFloat(time);
+  
+  
+
+  let g = amt*(rate/100); 
+  let total = (Math.round(g+amt));
+
+  gst.value = (g).toLocaleString('en-in')
+  amt.value = (total).toLocaleString('en-in')
+  totalValue.value = (Math.round(parseFloat(g) + parseFloat(total))).toLocaleString('en-in');
+  updateChart();
+}
+
+
+const data = {
+  labels: ['est. ret', 'principal amount'],
+  datasets: [{
+    label: 'My Doughnut Chart',
+    data: [g, amt],
+    backgroundColor: [
+      'rgb(200, 200, 200)', 
+      'rgb(50, 50, 50)' 
+    ],
+    borderWidth: 1
+  }]
+};
+
+const config = {
+  type: 'doughnut',
+  data: data,
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+      }
+    }
+  }
+};
+
+
+var myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+);
+  </script>
+</body>
+</html>
