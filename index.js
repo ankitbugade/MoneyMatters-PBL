@@ -52,6 +52,19 @@ app.get("/ppf",async(req,res)=>{
   console.log("lumpsum");
 });
 
+app.get("/ssy",async(req,res)=>{
+  res.render("ssy.ejs");
+  
+  console.log("ssy");
+});
+
+
+app.get("/gst",async(req,res)=>{
+
+  res.render("gst.ejs");
+  console.log("gst");
+});
+
 app.get("/signup",(req,res)=>{
   res.render("signup.ejs");
 });
