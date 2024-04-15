@@ -26,8 +26,8 @@
                 <br/> <input type="range"  value="25000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="principal " min="500" max="1000000" >
                 <br><br>
                 <label for="rate">Rate of Interest (% per annum):</label>
-                <input type="number" id="rate" name="rate" oninput="rInputHandler(event), calculate(event)" value="7.1" placeholder="Enter rate of interest">
-                <br/><input type="range" name="rRate" value="7.1" oninput="rRangeHandler(event)" onchange=" calculate(event)"  id="rRate" min="1" max="30" >
+                <input type="number" id="rate" name="rate" oninput="rInputHandler(event), calculate(event)" value="7.1" placeholder="Enter rate of interest" readonly>
+                <!-- <br/><input type="range" name="rRate" value="7.1" oninput="rRangeHandler(event)" onchange=" calculate(event)"  id="rRate" min="7.1" max="7.1" > -->
                 <br><br>
                 <label for="time">Time (years):</label>
                 <input type="number" id="time" name="time" oninput="tInputHandler(event),calculate(event)" value="15" placeholder="Enter time in years">
