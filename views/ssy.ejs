@@ -21,18 +21,19 @@
         <div class="calculator">
             <h2 class="calcluatorName">Sukanya Samridhi Yojana Calculator</h2>
             <form id="interestForm">
-                <span style="color: rgb(87, 87, 87); font-size: large;">current SSY returns: 8.2%</span><br><br>
                 <label for="principal">Yearly Investment:</label>
                 <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter yearly invested amount">
-                <br/> <input type="range"  value="2000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="principal " min="250" max="150000" >
+                <br/>
+                <input type="range"  value="2000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="principal" min="250" max="150000" >
                 <br><br>
-                <!-- <label for="rate">Rate of Interest (% per annum):</label>
-                <input type="number" id="rate" name="rate" oninput="rInputHandler(event), calculate(event)" value="12" placeholder="Enter rate of interest">
-                <br/><input type="range" name="rRate" value="12" oninput="rRangeHandler(event)" onchange=" calculate(event)"  id="rRate" min="1" max="30" >
-                <br><br> -->
+                <label for="rate">Current SSY Rate of Interest (% per annum):</label>
+                <input readonly type="number" id="rate" name="rate" oninput="rInputHandler(event), calculate(event)" value="8.2" placeholder="Enter rate of interest">
+                <br/>
+                <br><br>
                 <label for="time">Start period(year):</label>
-                <input type="number" id="time" name="time" oninput="tInputHandler(event),calculate(event)" value="10" placeholder="Enter time in years">
-                <br/><input type="range" name="rTime" value="10" oninput="tRangeHandler(event)" onchange=" calculate(event)"  id="rTime" min="2020" max="2030" >
+                <input type="number" id="time" name="time" oninput="tInputHandler(event),calculate(event)" value="2020" placeholder="Enter time in years">
+                <br/>
+                <input type="range" name="rTime" value="2020" oninput="tRangeHandler(event)" onchange=" calculate(event)"  id="rTime" min="2020" max="2030" >
                 <br><br><hr>
                 <div class="output">
                   <label for="A">Invested Amount : &#8377</label>
@@ -43,6 +44,9 @@
                   <br>
                   <label for="C">Total value : &#8377</label>
                   <input readonly value="" class="result" id="C" class="time"/>
+                  <br><br>
+                  <label for="C">Maturity Year: &#8377</label>
+                  <input readonly value="" class="result" id="D" class="year"/>
                 </div>
 
               </form>
@@ -129,7 +133,7 @@
     </div>
 
     
-    <%- include("footer.ejs")>
+    <%- include("footer.ejs")%>
 
     <script type="module" src="acquisitions.js"></script>
   <script>
@@ -164,15 +168,14 @@ let tRange = document.querySelector("#rTime")
 let investedAmt = document.querySelector("#A")
 let estRet = document.querySelector("#B") 
 let totalValue = document.querySelector("#C")
+let maturityYear = document.querySelector("#D")
 
 
 
 function pRangeHandler(event){
   p.value = event.target.value;
 }
-// function rRangeHandler(event){
-//   r.value = event.target.value;
-// }
+
 function tRangeHandler(event){
   t.value = event.target.value;
 }
@@ -185,12 +188,12 @@ function pInputHandler(event){
 //   rRange.value = event.target.value;
 // }
 function tInputHandler(event){
-  t.value = event.target.value;
+  tRange.value = event.target.value;
 }
 
 
-amt = p.value;
-  rate = 8.2;
+  amt = p.value;
+  rate = r.value;
   time = t.value;
 
   amt = parseFloat(amt);
