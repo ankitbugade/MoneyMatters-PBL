@@ -138,166 +138,217 @@
     <script type="module" src="acquisitions.js"></script>
   <script>
     // Data
-   // Data
-let amt = 100;
-let rate = 5;
-let time = 10;
-let M 
-let totalAmount
+//    // Data
+// let amt = 100;
+// let rate = 5;
+// let time = 10;
+// let M 
+// let totalAmount
 
 
-let p = document.querySelector("#principal");
-p.addEventListener('change', (event) => {
-  amt = event.target.value;
-});
-
-// let r = document.querySelector("#rate");
-// r.addEventListener('change', (event) => {
-//   rate = event.target.value;
+// let p = document.querySelector("#principal");
+// p.addEventListener('change', (event) => {
+//   amt = event.target.value;
 // });
 
-let t = document.querySelector("#time");
-t.addEventListener('change', (event) => {
-  time = event.target.value;
-});
+// // let r = document.querySelector("#rate");
+// // r.addEventListener('change', (event) => {
+// //   rate = event.target.value;
+// // });
 
-let pRange = document.querySelector("#rPrincipal")
-// let rRange = document.querySelector("#rRate") 
-let tRange = document.querySelector("#rTime")
+// let t = document.querySelector("#time");
+// t.addEventListener('change', (event) => {
+//   time = event.target.value;
+// });
 
-let investedAmt = document.querySelector("#A")
-let estRet = document.querySelector("#B") 
-let totalValue = document.querySelector("#C")
-let maturityYear = document.querySelector("#D")
+// let pRange = document.querySelector("#rPrincipal")
+// // let rRange = document.querySelector("#rRate") 
+// let tRange = document.querySelector("#rTime")
 
-
-
-function pRangeHandler(event){
-  p.value = event.target.value;
-}
-
-function tRangeHandler(event){
-  t.value = event.target.value;
-}
+// let investedAmt = document.querySelector("#A")
+// let estRet = document.querySelector("#B") 
+// let totalValue = document.querySelector("#C")
+// let maturityYear = document.querySelector("#D")
 
 
-function pInputHandler(event){
-  pRange.value = event.target.value;
-}
-// function rInputHandler(event){
-//   rRange.value = event.target.value;
+
+// function pRangeHandler(event){
+//   p.value = event.target.value;
 // }
-function tInputHandler(event){
-  tRange.value = event.target.value;
-}
+
+// function tRangeHandler(event){
+//   t.value = event.target.value;
+// }
 
 
-  amt = p.value;
-  rate = r.value;
-  time = t.value;
+// function pInputHandler(event){
+//   pRange.value = event.target.value;
+// }
+// // function rInputHandler(event){
+// //   rRange.value = event.target.value;
+// // }
+// function tInputHandler(event){
+//   tRange.value = event.target.value;
+// }
 
-  amt = parseFloat(amt);
-  rate = parseFloat(rate);
-  time = parseFloat(time);
+
+//   amt = p.value;
+//   rate = r.value;
+//   time = t.value;
+
+//   amt = parseFloat(amt);
+//   rate = parseFloat(rate);
+//   time = parseFloat(time);
   
-  let i = rate / 100;
-  console.log(amt,rate,time);
-  //P × ({[1 + i]^n - 1} / i) × (1 + i)
-  let n = time;
- let a = Math.pow((1+i),(n));
-  M = amt*a;
-   totalAmount = amt;
+//   let i = rate / 100;
+//   console.log(amt,rate,time);
+//   //P × ({[1 + i]^n - 1} / i) × (1 + i)
+//   let n = time;
+//  let a = Math.pow((1+i),(n));
+//   M = amt*a;
+//    totalAmount = amt;
 
-  let investedamount = (Math.round(amt*time));
-  let estReturns = (Math.round(M-totalAmount));
+//   let investedamount = (Math.round(amt*time));
+//   let estReturns = (Math.round(M-totalAmount));
 
-  investedAmt.value = (investedamount).toLocaleString('en-in')
-  estRet.value = (estReturns).toLocaleString('en-in')
-  totalValue.value = (Math.round(parseFloat(investedamount) + parseFloat(estReturns))).toLocaleString('en-in');
+//   investedAmt.value = (investedamount).toLocaleString('en-in')
+//   estRet.value = (estReturns).toLocaleString('en-in')
+//   totalValue.value = (Math.round(parseFloat(investedamount) + parseFloat(estReturns))).toLocaleString('en-in');
   
 
-function updateChart() {
-  const newData = {
-    labels: ['est. ret', 'principal amount'],
-    datasets: [{
-      label: 'My Doughnut Chart',
-      data: [M-totalAmount, totalAmount],
-      backgroundColor: [
-        'rgb(50, 50, 50)' ,
-        'rgb(200, 200, 200)'
-      ],
-      borderWidth: 1
-    }]
-  };
+// function updateChart() {
+//   const newData = {
+//     labels: ['est. ret', 'principal amount'],
+//     datasets: [{
+//       label: 'My Doughnut Chart',
+//       data: [M-totalAmount, totalAmount],
+//       backgroundColor: [
+//         'rgb(50, 50, 50)' ,
+//         'rgb(200, 200, 200)'
+//       ],
+//       borderWidth: 1
+//     }]
+//   };
 
-  myChart.data = newData; 
-  myChart.update(); 
-}
+//   myChart.data = newData; 
+//   myChart.update(); 
+// }
 
 
+// function calculate() {
+//   event.preventDefault();
+//   console.log("workingg",r.value,t.value,amt);
+//   amt = p.value;
+//   rate = 8.2;
+//   time = t.value;
+
+//   amt = parseFloat(amt);
+//   rate = parseFloat(rate);
+//   time = parseFloat(time);
+  
+//   let i = rate / 1200;
+//   console.log(amt,rate,time);
+//   //P × ({[1 + i]^n - 1} / i) × (1 + i)
+//   let n = time*12;
+//  let a = Math.pow((1+i),(n))-1;
+//   M = amt*(a/i)*(1+i);
+//    totalAmount = amt*n;
+
+//   let investedamount = (Math.round(amt*12*time));
+//   let estReturns = (Math.round(M-totalAmount));
+
+//   investedAmt.value = (investedamount).toLocaleString('en-in')
+//   estRet.value = (estReturns).toLocaleString('en-in')
+//   totalValue.value = (Math.round(parseFloat(investedamount) + parseFloat(estReturns))).toLocaleString('en-in');
+//   updateChart();
+// }
+
+
+// const data = {
+//   labels: ['est. ret', 'principal amount'],
+//   datasets: [{
+//     label: 'My Doughnut Chart',
+//     data: [M-totalAmount, totalAmount],
+//     backgroundColor: [
+//       'rgb(200, 200, 200)', 
+//       'rgb(50, 50, 50)' 
+//     ],
+//     borderWidth: 1
+//   }]
+// };
+
+// const config = {
+//   type: 'doughnut',
+//   data: data,
+//   options: {
+//     responsive: true,
+//     plugins: {
+//       legend: {
+//         position: 'top',
+//       },
+//       title: {
+//         display: true,
+//       }
+//     }
+//   }
+// };
+
+
+// var myChart = new Chart(
+//   document.getElementById('myChart'),
+//   config
+// );
+// Initial Values
+let amt = parseFloat(document.querySelector("#principal").value);
+let rate = parseFloat(document.querySelector("#rate").value);
+let time = parseFloat(document.querySelector("#time").value);
+
+// Event Listeners
+document.querySelector("#principal").addEventListener('input', calculate);
+document.querySelector("#time").addEventListener('input', calculate);
+
+// Function to calculate values
 function calculate() {
-  event.preventDefault();
-  console.log("workingg",r.value,t.value,amt);
-  amt = p.value;
-  rate = 8.2;
-  time = t.value;
+    // Prevent default event action (form submission)
+    event.preventDefault();
+    
+    // Retrieve input values
+    amt = parseFloat(document.querySelector("#principal").value);
+    time = parseFloat(document.querySelector("#time").value);
 
-  amt = parseFloat(amt);
-  rate = parseFloat(rate);
-  time = parseFloat(time);
-  
-  let i = rate / 1200;
-  console.log(amt,rate,time);
-  //P × ({[1 + i]^n - 1} / i) × (1 + i)
-  let n = time*12;
- let a = Math.pow((1+i),(n))-1;
-  M = amt*(a/i)*(1+i);
-   totalAmount = amt*n;
+    // Perform calculation
+    const i = rate / 1200; // Monthly interest rate
+    const n = time * 12; // Total number of payments
+    const a = Math.pow((1 + i), n) - 1;
+    const M = amt * (a / i) * (1 + i);
+    const totalAmount = amt * n;
 
-  let investedamount = (Math.round(amt*12*time));
-  let estReturns = (Math.round(M-totalAmount));
-
-  investedAmt.value = (investedamount).toLocaleString('en-in')
-  estRet.value = (estReturns).toLocaleString('en-in')
-  totalValue.value = (Math.round(parseFloat(investedamount) + parseFloat(estReturns))).toLocaleString('en-in');
-  updateChart();
+    // Update output fields
+    document.querySelector("#A").value = (Math.round(amt * 12 * time)).toLocaleString('en-in');
+    document.querySelector("#B").value = (Math.round(M - totalAmount)).toLocaleString('en-in');
+    document.querySelector("#C").value = (Math.round(totalAmount + (M - totalAmount))).toLocaleString('en-in');
+    updateChart(M, totalAmount);
 }
 
+// Chart update function
+function updateChart(M, totalAmount) {
+    const newData = {
+        labels: ['Estimated Returns', 'Principal Amount'],
+        datasets: [{
+            label: 'Investment Overview',
+            data: [M - totalAmount, totalAmount],
+            backgroundColor: ['rgb(50, 50, 50)', 'rgb(200, 200, 200)'],
+            borderWidth: 1
+        }]
+    };
 
-const data = {
-  labels: ['est. ret', 'principal amount'],
-  datasets: [{
-    label: 'My Doughnut Chart',
-    data: [M-totalAmount, totalAmount],
-    backgroundColor: [
-      'rgb(200, 200, 200)', 
-      'rgb(50, 50, 50)' 
-    ],
-    borderWidth: 1
-  }]
-};
+    myChart.data = newData;
+    myChart.update();
+}
 
-const config = {
-  type: 'doughnut',
-  data: data,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-      }
-    }
-  }
-};
+// Initial calculation and chart setup
+calculate();
 
-
-var myChart = new Chart(
-  document.getElementById('myChart'),
-  config
-);
   </script>
 </body>
 </html>
