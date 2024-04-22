@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,9 +22,12 @@
         <div class="calculator">
             <h2 class="calcluatorName">GST Calculator</h2>
             <form id="interestForm">
+
+              
+
                 <label for="principal">Amount:</label>
                 <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter principal amount">
-                <br/> <input type="range"  value="25000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="principal " min="500" max="1000000" >
+                <br/> <input type="range"  value="25000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="rPrincipal " min="500" max="1000000" >
                 <br><br>
                 <label for="rate">GST Rate :</label>
                 <select name="rate" id="rate" oninput="rInputHandler(event), calculate(event)">
@@ -137,7 +141,7 @@
    // Data
 let amt = 100;
 let rate = 5;
-let time = 10;
+<!-- let time = 10; -->
 let M 
 let totalAmount
 
@@ -154,9 +158,8 @@ r.addEventListener('change', (event) => {
 
 
 let pRange = document.querySelector("#rPrincipal")
-let rRange = document.querySelector("#rRate") 
 
-let GST = document.querySelector("#A")
+let gst = document.querySelector("#A")
 let totalAmt = document.querySelector("#B") 
 
 
@@ -164,21 +167,12 @@ let totalAmt = document.querySelector("#B")
 function pRangeHandler(event){
   p.value = event.target.value;
 }
-function rRangeHandler(event){
-  r.value = event.target.value;
-}
-
-
 
 function pInputHandler(event){
   pRange.value = event.target.value;
 }
-function rInputHandler(event){
-  rRange.value = event.target.value;
-}
 
-
-  principal = p.value;
+amt = p.value;
   rate = r.value;
 
   amt = parseFloat(amt);
@@ -189,8 +183,8 @@ function rInputHandler(event){
   let total = (Math.round(g+amt));
 
   gst.value = (g).toLocaleString('en-in')
-  amt.value = (total).toLocaleString('en-in')
-  totalValue.value = (Math.round(parseFloat(g) + parseFloat(total))).toLocaleString('en-in');
+  amt.value = (amt).toLocaleString('en-in')
+  totalAmt.value = (total).toLocaleString('en-in');
   
 
 function updateChart() {
@@ -217,20 +211,16 @@ function calculate() {
   console.log("workingg",r.value,t.value,amt);
   amt = p.value;
   rate = r.value;
-  time = t.value;
 
   amt = parseFloat(amt);
   rate = parseFloat(rate);
-  time = parseFloat(time);
-  
-  
 
   let g = amt*(rate/100); 
   let total = (Math.round(g+amt));
 
   gst.value = (g).toLocaleString('en-in')
   amt.value = (total).toLocaleString('en-in')
-  totalValue.value = (Math.round(parseFloat(g) + parseFloat(total))).toLocaleString('en-in');
+  totalAmt.value = (Math.round(parseFloat(g) + parseFloat(total))).toLocaleString('en-in');
   updateChart();
 }
 
