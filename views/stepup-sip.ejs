@@ -1,5 +1,4 @@
-
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,38 +13,43 @@
 <body>
 
     
-  <!-- Title -->
-  <%- include("header.ejs") %>
-                                                                                          
+    <%- include("header.ejs") %>
+    
+
   <!-- calcluator -->
     <div class="container grid p-5">
         <div class="calculator">
-            <h2 class="calcluatorName">GST Calculator</h2>
+            <h2 class="calcluatorName">Step Up SIP Calculator</h2>
             <form id="interestForm">
-                <label for="principal">Amount:</label>
-                <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter principal amount">
-                <br/> <input type="range"  value="25000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="rPrincipal " min="500" max="1000000" >
+                <label for="principal">Monthly Investment:</label>
+                <input type="number" id="principal" onchange="pRangeHandler(event),pInputHandler(event)" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter principal amount">
+                <br/> <input type="range"  value="25000" oninput="pRangeHandler(event),pInputHandler(event)" onchange=" calculate(event)" id="rPrincipal " min="500" max="1000000" >
                 <br><br>
-                <label for="rate">GST Rate :</label>
-                <select name="rate" id="rate" oninput="rInputHandler(event), calculate(event)">
-                  <option value="3">3</option>
-                  <option value="5">5</option>
-                  <option value="12">12</option>
-                  <option value="18">18</option>
-                  <option value="28">28</option>
-                </select>
-                
+                <label for="stepup">Annual step up (% per annum):</label>
+                <input type="number" id="stepup" name="stepup" oninput="sInputHandler(event), calculate(event)" value="10" placeholder="Enter annual step up">
+                <br/><input type="range" name="rStepup" value="10" oninput="sRangeHandler(event)" onchange=" calculate(event)"  id="stepup" min="1" max="30" >
                 <br><br>
-                <hr>
-                <div class="output">
-                  <label for="A">GST : &#8377</label>
-                  <input readonly value="" class="result"  id="A" class="principal"/><br>
-                  <br>
-                  <label for="B">Total Value: &#8377</label>
-                  <input readonly value="" class="result" id="B" class="rate"/><br>
-                  <br>
-                </div>
-              
+                <label for="rate">Rate of Interest (% per annum):</label>
+                <input type="number" id="rate" name="rate" oninput="rInputHandler(event), calculate(event)" value="12" placeholder="Enter rate of interest">
+                <br/><input type="range" name="rRate" value="12" oninput="rRangeHandler(event)" onchange=" calculate(event)"  id="rRate" min="1" max="30" >
+                <br><br>
+                <label for="time">Time (years):</label>
+                <input type="number" id="time" name="time" oninput="tInputHandler(event),calculate(event)" value="10" placeholder="Enter time in years">
+                <br/><input type="range" name="rTime" value="10" oninput="tRangeHandler(event)" onchange=" calculate(event)"  id="rTime" min="1" max="40" >
+                <br><br>
+
+                <div>-----------------------------------------------------------------------------------------------------------------------</div>
+            
+                <label for="A">Invested Amount : &#8377</label>
+                <input readonly value="" class="result"  id="A" class="principal"/><br>
+
+                <label for="B">Est. Return : &#8377</label>
+                <input readonly value="" class="result" id="B" class="rate"/><br>
+
+                <label for="C">Total value: &#8377</label>
+                <input readonly value="" class="result" id="C" class="time"/>
+
+
               </form>
 
 
@@ -80,7 +84,7 @@
                     <h4>What is a SIP Calculator?</h4>
                     A SIP plan calculator works on the following formula -<br><br>
     
-                    M = P × ({[1 + i]^n - 1} / i) × (1 + i).<br><br>
+                    FV = P * (1 + r/n) ^ (n*t).<br><br>
     
                     In the above formula -<br>
                     <ul>
@@ -114,13 +118,11 @@
             </div>
         </div>
 
-        
-
         <div class=" calculatorList col-md-4 col-xl-3 mb-3"> <!-- added class for width -->
             <h5 >Other Calculators</h5>
             <ul class="nav flex-column">
               <li class="nav-item mb-2 pt-4"><a href="#" class="nav-link p-0 text-body-secondary">EMI Calculator</a></li>
-              <li class="nav-item mb-2"><a href="./ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">EPF Calculator</a></li>
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">SWP Calculator</a></li>
@@ -129,58 +131,116 @@
 
     </div>
 
-    
     <%- include("footer.ejs") %>
 
     <script type="module" src="acquisitions.js"></script>
   <script>
-    // Declare variables
-let amt, rate, g, total;
+    // Data
+   // Data
+let amt = 100;
+let rate = 5;
+let stepup = 10;
+let time = 10;
+let M 
+let totalAmount
 
-// Get input elements
+
 let p = document.querySelector("#principal");
+p.addEventListener('change', (event) => {
+  amt = event.target.value;
+});
+
 let r = document.querySelector("#rate");
-let pRange = document.querySelector("#rPrincipal");
-let gst = document.querySelector("#A");
-let totalAmt = document.querySelector("#B");
+r.addEventListener('change', (event) => {
+  rate = event.target.value;
+});
 
-// Add event listeners for input elements
-p.addEventListener('input', calculate);
-r.addEventListener('change', calculate);
-pRange.addEventListener('input', pInputHandler);
+let s = document.querySelector("#stepup");
+s.addEventListener('change', (event) => {
+  stepup = event.target.value;
+});
 
-// Function to handle principal range input
-function pInputHandler(event) {
+let t = document.querySelector("#time");
+t.addEventListener('change', (event) => {
+  time = event.target.value;
+});
+
+let pRange = document.querySelector("#rPrincipal")
+let rRange = document.querySelector("#rRate") 
+let sRange = document.querySelector("#rStepup") 
+let tRange = document.querySelector("#rTime")
+
+let investedAmt = document.querySelector("#A")
+let estRet = document.querySelector("#B") 
+let totalValue = document.querySelector("#C")
+
+
+
+function pRangeHandler(event){
   p.value = event.target.value;
 }
-
-// Function to calculate GST and total amount
-function calculate() {
-  // Get values from input elements
-  amt = parseFloat(p.value);
-  rate = parseFloat(r.value);
-
-  // Calculate GST and total amount
-  g = amt * (rate / 100); 
-  total = Math.round(g + amt);
-
-  // Update input field values
-  gst.value = g.toLocaleString('en-in');
-  totalAmt.value = total.toLocaleString('en-in');
-
-  // Update chart
-  updateChart();
+function rRangeHandler(event){
+  r.value = event.target.value;
+}
+function sRangeHandler(event){
+  s.value = event.target.value;
+}
+function tRangeHandler(event){
+  t.value = event.target.value;
 }
 
-// Function to update the chart
+
+function pInputHandler(event){
+  pRange.value = event.target.value;
+}
+function rInputHandler(event){
+  rRange.value = event.target.value;
+}
+function sInputHandler(event){
+  sRange.value = event.target.value;
+}
+function tInputHandler(event){
+  tRange.value = event.target.value;
+}
+
+
+  amt = p.value;
+  rate = r.value;
+  stepup = s.value;
+  time = t.value;
+
+  amt = parseFloat(amt);
+  rate = parseFloat(rate);
+  stepup = parseFloat(stepup);
+  time = parseFloat(time);
+  
+  let i = rate / 1200;
+ 
+  //P × ({[1 + i]^n - 1} / i) × (1 + i)
+  //FV = P * (1 + r/n) ^ (n*t)
+
+  let n = time*12;
+  let a = Math.pow(( amt * (1 + rate/stepup) ),( stepup*time ));
+  M = amt*(a/i)*(1+i);
+  totalAmount = amt*n;
+
+  let investedamount = (Math.round(amt*12*time));
+  let estReturns = (Math.round(M-totalAmount));
+
+  investedAmt.value = (investedamount).toLocaleString('en-in')
+  estRet.value = (estReturns).toLocaleString('en-in')
+  totalValue.value = (Math.round(parseFloat(investedamount) + parseFloat(estReturns))).toLocaleString('en-in');
+  
+
 function updateChart() {
+  console.log(amt,stepup,rate,time)
   const newData = {
-    labels: ['GST', 'Total Amount'],
+    labels: ['est. ret', 'principal amount'],
     datasets: [{
-      label: 'GST and Total Amount',
-      data: [g, total],
+      label: 'My Doughnut Chart',
+      data: [M-totalAmount, totalAmount],
       backgroundColor: [
-        'rgb(50, 50, 50)',
+        'rgb(50, 50, 50)' ,
         'rgb(200, 200, 200)'
       ],
       borderWidth: 1
@@ -191,21 +251,51 @@ function updateChart() {
   myChart.update(); 
 }
 
-// Initial chart data
+
+function calculate() {
+  event.preventDefault();
+
+  amt = p.value;
+  rate = r.value;
+  time = t.value;
+  stepup = s.value;
+
+  amt = parseFloat(amt);
+  rate = parseFloat(rate);
+  time = parseFloat(time);
+  stepup = parseFloat(stepup);
+  
+  let i = rate / 1200;
+
+  //P × ({[1 + i]^n - 1} / i) × (1 + i)
+  let n = time*12;
+ let a = Math.pow((1+i),(n))-1;
+  M = amt*(a/i)*(1+i);
+   totalAmount = amt*n;
+
+  let investedamount = (Math.round(amt*12*time));
+  let estReturns = (Math.round(M-totalAmount));
+
+  investedAmt.value = (investedamount).toLocaleString('en-in')
+  estRet.value = (estReturns).toLocaleString('en-in')
+  totalValue.value = (Math.round(parseFloat(investedamount) + parseFloat(estReturns))).toLocaleString('en-in');
+  updateChart();
+}
+
+
 const data = {
-  labels: ['GST', 'Total Amount'],
+  labels: ['est. ret', 'principal amount'],
   datasets: [{
-    label: 'GST and Total Amount',
-    data: [g, total],
+    label: 'My Doughnut Chart',
+    data: [M-totalAmount, totalAmount],
     backgroundColor: [
-      'rgb(200, 200, 200)',
-      'rgb(50, 50, 50)'
+      'rgb(200, 200, 200)', 
+      'rgb(50, 50, 50)' 
     ],
     borderWidth: 1
   }]
 };
 
-// Chart configuration
 const config = {
   type: 'doughnut',
   data: data,
@@ -222,6 +312,11 @@ const config = {
   }
 };
 
+
+var myChart = new Chart(
+  document.getElementById('myChart'),
+  config
+);
   </script>
 </body>
 </html>

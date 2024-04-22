@@ -39,6 +39,13 @@ app.get("/sip",async(req,res)=>{
   console.log("sip");
 });
 
+
+app.get("/stepupsip",async(req,res)=>{
+  res.render("stepup-sip.ejs");
+  
+  console.log("step up sip");
+});
+
 app.get("/lumpsum",async(req,res)=>{
   res.render("lumpsum.ejs");
   
