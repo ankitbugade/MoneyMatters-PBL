@@ -45,8 +45,8 @@
                   <label for="C">Total value : &#8377</label>
                   <input readonly value="" class="result" id="C" class="time"/>
                   <br><br>
-                  <label for="C">Maturity Year: &#8377</label>
-                  <input readonly value="" class="result" id="D" class="year"/>
+                  <!-- <label for="C">Maturity Year: &#8377</label>
+                  <input readonly value="" class="result" id="D" class="year"/> -->
                 </div>
 
               </form>
@@ -307,6 +307,25 @@ let time = parseFloat(document.querySelector("#time").value);
 document.querySelector("#principal").addEventListener('input', calculate);
 document.querySelector("#time").addEventListener('input', calculate);
 
+function compoundInterestEveryYear(P, r, n) {
+    // P: annual investment amount
+    // r: annual interest rate (in percentage)
+    // n: number of years
+    
+    // Convert the annual interest rate from percentage to decimal
+    r = r / 100;
+    
+    let A = 0;
+    
+    // Calculate the future value of each annual investment and sum them up
+    for (let i = 1; i <= n; i++) {
+        A += P * Math.pow(1 + r, i);
+    }
+    
+    return A;
+}
+
+
 // Function to calculate values
 function calculate() {
     // Prevent default event action (form submission)
@@ -317,17 +336,22 @@ function calculate() {
     time = parseFloat(document.querySelector("#time").value);
 
     // Perform calculation
-    const i = rate / 1200; // Monthly interest rate
-    const n = time * 12; // Total number of payments
-    const a = Math.pow((1 + i), n) - 1;
-    const M = amt * (a / i) * (1 + i);
+    const i = rate / 100; 
+    const n = 15 ; 
+    const a = Math.pow((1 + i), n) ;
     const totalAmount = amt * n;
+    const maturityYear = time + 21;
+
+    const M = compoundInterestEveryYear(amt,8.2, 15);
+
 
     // Update output fields
-    document.querySelector("#A").value = (Math.round(amt * 12 * time)).toLocaleString('en-in');
+    document.querySelector("#A").value = (Math.round(totalAmount)).toLocaleString('en-in');
     document.querySelector("#B").value = (Math.round(M - totalAmount)).toLocaleString('en-in');
-    document.querySelector("#C").value = (Math.round(totalAmount + (M - totalAmount))).toLocaleString('en-in');
+    document.querySelector("#C").value = (Math.round(M)).toLocaleString('en-in');
+    document.querySelector("#D").value = (Math.round(maturityYear)).toLocaleString('en-in');
     updateChart(M, totalAmount);
+    
 }
 
 // Chart update function
@@ -336,7 +360,7 @@ function updateChart(M, totalAmount) {
         labels: ['Estimated Returns', 'Principal Amount'],
         datasets: [{
             label: 'Investment Overview',
-            data: [M - totalAmount, totalAmount],
+            data: [M , totalAmount],
             backgroundColor: ['rgb(50, 50, 50)', 'rgb(200, 200, 200)'],
             borderWidth: 1
         }]
