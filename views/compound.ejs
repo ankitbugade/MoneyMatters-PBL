@@ -19,7 +19,7 @@
   <!-- calcluator -->
     <div class="container grid p-5">
         <div class="calculator">
-            <h2 class="calcluatorName">FD Calculator</h2>
+            <h2 class="calcluatorName">Compund Interest Calculator</h2>
             <form id="interestForm">
                 <label for="principal">Principal Amount:</label>
                 <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter principal amount">
@@ -32,15 +32,17 @@
                 <label for="time">Time (years):</label>
                 <input type="number" id="time" name="time" oninput="tInputHandler(event),calculate(event)" value="10" placeholder="Enter time in years">
                 <br/><input type="range" name="rTime" value="10" oninput="tRangeHandler(event)" onchange=" calculate(event)"  id="rTime" min="1" max="40" >
-                <br><br><hr>
+                <br><br>
+                <h6>Compounding Frequency : Yearly </h6><hr>
                 <div class="output">
-                  <label for="A">Invested Amount : &#8377</label>
+                    
+                  <label for="A">Principal Amount : &#8377</label>
                   <input readonly value="" class="result"  id="A" class="principal"/><br>
                   <br>
-                  <label for="B">Estimated Return : &#8377</label>
+                  <label for="B">Total Interest : &#8377</label>
                   <input readonly value="" class="result" id="B" class="rate"/><br>
                   <br>
-                  <label for="C">Maturity Amount : &#8377</label>
+                  <label for="C">Total Amount : &#8377</label>
                   <input readonly value="" class="result" id="C" class="time"/>
                 </div>
 
@@ -54,79 +56,83 @@
 
             <div class="container mt-5">
                 <div class="info">
-                     <h4> FD Calculator </h4> 
-                       <p>
-                        A fixed deposit is a type of term investment offered by several banks and NBFCs. These deposits typically offer a higher rate of interest, subject to certain terms and conditions. The amount you deposit in these deposits is locked for a predetermined period which can vary between 7 days and 10 years.
-                        <br><br>
-An FD calculator can be used to determine the interest and the amount that it will accrue at the time of maturity. It is a simple-to-use tool available on the Groww website.
-                       </p><br><br>
+                     <h4> Compound Interest Calculator  </h4> 
+                     Compounding interest, as opposed to simple interest, is the situation where your wealth increases exponentially because you earn interest on your total investments, the aggregation of your principal amount and the interest it incurs. Mathematically, the possibilities of compound interest are endless. Most of the modern business thrives on it. One needs a reliable compound interest calculator to ensure they are receiving the right ROI.<br><br>
                 </div> 
                 <div class="info"> 
-                    <h4>How can an FD calculator help you?</h4>
-                    <p>Calculating the maturity amount of an FD can be a complicated and time-consuming process. An online FD calculator enables one to figure it without breaking a sweat. <br></p>
-                    <ul>
-                      <li>FD maturity calculations are complex involving multiple variables. A Fixed Deposit calculator does all the hard work and gives you accurate figures just at the click of a button.</li>
-                      <li>It helps you save a lot of time on these complex calculations.</li>
-                      <li>A fixed deposit return calculator enables you to compare the maturity amount and interest rates of FDs offered by different financial institutions. You can make an informed decision when you have all the figures at your disposal.</li>
-                    </ul><br><br>
+                    <h4>How can a Compound Interest Calculator Help You?</h4>
+                    <p>The nature of compound interest makes it extremely lucrative for businesses. When you use a compound interest calculator online, you can avail the following benefits.</p>
+                    <ul><li>It helps you determine an accurate figure and percentage of returns over a certain time frame</li>
+                    <li>A reliable calculator helps you identify how much investment you might need over a time frame. The required corpus of funds can then be arranged with convenience.</li>
+                    <li>Annualised return</li>
+                    <li>Groww offers you a customizable compound interest rate calculator which helps you assign values based on your requirements</li>
+                    <li>A compounnd interest calculator helps calculate the total returns as well as yearly returns in case you need to consider breaking such an investment as per your future financial planning. If so, it is also advisable to consider pre-closure charges of the investment corpus.
+                      </li>
+                    <li>
+                        To keep deposit rates in line with the market, the Indian Government decided to annualize the interest rates on National Savings Certificates. The changes were effected in 2016. To determine how much your savings schemes now work, you must use an online calculator.</li></ul>
+                      
+                  <br><br>
                 </div>
                 <div class="info"> 
-                    <h4>The formula to determine FD maturity amount</h4>
-                    <p>There are two types of FD that you may avail of – simple interest FD and compound interest FD. Groww has calculators for both types of FD.</p><br>
-                    <p>The fixed deposit calculator for simple interest FD uses the following formula –
-                      <br>
-                      <p><b>M=P×(1 + r/100)^n</b></p>
-                    </p>
+                    <h4>Formula to Calculate Compound Interest</h4>
+                    <p>The formula is as follows:
+                      <br><br>
+                      <b>A = P (1 + r/n) ^ nt</b>
+                      <br><br>
+                      The variables are mentioned in the table below.</p>
                     <ul>
-                        <li>P : P is the principal amount that you deposit</li>
-                        <li>r : r is the rate of interest per annum</li>
-                        <li>n : n is the tenure in years</li>
+                        <li>A : Estimated return</li>
+                        <li>P : Present Value</li>
+                        <li>r : Rate of return</li>
+                        <li>t : Duration of investment</li>
+                        <li>n : Number of compounded interests in a year</li>
                     </ul>
+                    <br><br>
+                    
                 </div> 
                 <div class="info"> 
-                    <h4>How to use FD calculator?</h4>
-                   <p>Follow the steps mentioned below to use an FD deposit calculator conveniently.</p>
+                    <h4>How to use Compound Interest calculator?</h4>
+                    <p>Using  calculator is easy when you remember these easy steps.</p>
                     <ul>
-                        <li>Ensure you have all the related data available to you.</li>
-                        <li>Enter the variables as mentioned in the formula on their designated slots.</li>
-                        <li>The FD maturity amount will be displayed instantly.</li>
-                        
-                    </ul>              
-                    
-                </div>
-                <div class="info"> 
-                    <h4>Advantages of using Groww FD calculator India</h4>
-                    <p>Know the exact amount you will receive at the time of FD maturity using the FD amount calculator.</p>
-                    <p>There are several other advantages of using these calculators –
-                    </p>
-                    <ul>
-                      <li>Compare the maturity amount of different financial institutions easily.</li>
-                      <li>Both of these calculators are free for unlimited use by registered users.</li>
-                      <li>Get the exact amount you are eligible for at the end of your maturity period and plan your future accordingly.</li>
-                    </ul><br>
+                      <li>Enter the principal, rate, and tenor you wish to calculate compound interest forli>
+                      <li>The calculator will display the results within seconds. </li>
+                    </ul><br><br>
+    
                 </div>
                 
+                <div class="info"> 
+                    <h4>Advantages of using Compound Interest Calculator</h4>
+                     <p>We provide you with an accurate compound interest calculator for unlimited use. Groww is ideal for daily use thanks to –</p>
+                    <ul>
+                        <li>Ease of use.
+                            </li>
+                        <li>Reliability and accuracy.
+                            </li>
+                        <li>Data security.</li>
+                        
+                    </ul>
+                </div>
             </div>
         </div>
 
         
 
         <div class=" calculatorList col-md-4 col-xl-3 mb-3"> <!-- added class for width -->
-          <h5 >Other Calculators</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2 pt-4"><a href="./stepup-sip" class="nav-link p-0 text-body-secondary">Step Up SIP </a></li>
-            <li class="nav-item mb-2"><a href="./ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
-            <li class="nav-item mb-2"><a href="./ssy" class="nav-link p-0 text-body-secondary">SSY Calculator</a></li>
-            <li class="nav-item mb-2"><a href="./gst" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
-            <li class="nav-item mb-2"><a href="./lumpsum" class="nav-link p-0 text-body-secondary">Lumpsum </a></li>
-            <li class="nav-item mb-2"><a href="./home-loan" class="nav-link p-0 text-body-secondary">Home Loan </a></li>
-            <li class="nav-item mb-2"><a href="./fd" class="nav-link p-0 text-body-secondary">FD Calculator</a></li>
-            <li class="nav-item mb-2"><a href="./sip" class="nav-link p-0 text-body-secondary">SIP Calculator</a></li>
-            <li class="nav-item mb-2"><a href="./compound" class="nav-link p-0 text-body-secondary">Compound Interest</a></li>
-          </ul>
-        </div>
+            <h5 >Other Calculators</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2 pt-4"><a href="./stepup-sip" class="nav-link p-0 text-body-secondary">Step Up SIP </a></li>
+              <li class="nav-item mb-2"><a href="./ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./ssy" class="nav-link p-0 text-body-secondary">SSY Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./gst" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./lumpsum" class="nav-link p-0 text-body-secondary">Lumpsum </a></li>
+              <li class="nav-item mb-2"><a href="./home-loan" class="nav-link p-0 text-body-secondary">Home Loan </a></li>
+              <li class="nav-item mb-2"><a href="./fd" class="nav-link p-0 text-body-secondary">FD Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./sip" class="nav-link p-0 text-body-secondary">SIP Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./compound" class="nav-link p-0 text-body-secondary">Compound Interest</a></li>
+            </ul>
+          </div>
 
-    </div>
+  </div>
 
     
     <%- include("footer.ejs")%>
@@ -200,8 +206,8 @@ amt = p.value;
   let i = rate / 100;
   console.log(amt,rate,time);
   //P × ({[1 + i]^n - 1} / i) × (1 + i)
-  let n = time;
- let a = Math.pow((1+i),(n));
+  let n = time;  
+ let a = Math.pow((1+i),(time));
   M = amt*a;
    totalAmount = amt;
 
@@ -215,7 +221,7 @@ amt = p.value;
 
 function updateChart() {
   const newData = {
-    labels: ['est. ret', 'principal amount'],
+    labels: ['Total Interest', 'principal amount'],
     datasets: [{
       label: 'My Doughnut Chart',
       data: [M-totalAmount, totalAmount],
@@ -246,8 +252,8 @@ function calculate() {
   let i = rate / 100;
   console.log(amt,rate,time);
   //P × ({[1 + i]^n - 1} / i) × (1 + i)
-  let n = time;
- let a = Math.pow((1+i),(n));
+  let n = time;  
+ let a = Math.pow((1+i),(time));
   M = amt*a;
    totalAmount = amt;
 
