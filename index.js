@@ -7,14 +7,14 @@ const app = express();
 const port = 3000;
 env.config();
 
-// const db = new pg.Client({
-//   user: process.env.PG_USER,
-//   host: process.env.PG_HOST,
-//   database: process.env.PG_DATABASE,
-//   password: process.env.PG_PASSWORD,
-//   port: process.env.PG_PORT,
-// });
-// db.connect();
+const db = new pg.Client({
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
+});
+db.connect();
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static("public"));
@@ -117,6 +117,24 @@ app.post("/login", async (req, res) =>{
   
 });
 
+app.get("/home-afford",async(req,res)=>{
+  res.render("home-afford.ejs");
+  console.log("home afford");
+  
+});
+
+app.post("/home-afford/calculate",async(req,res)=>{
+  let homeAmt = req.body["HomeAmt"];
+  let salary =  req.body["salary"];
+  let dp = req.body["savings"];
+  let emi = req.body["emi"];
+
+  const a = Boolean(salary*12 >= homeAmt/3);
+  const b = Boolean(dp >= 0.2*homeAmt);
+  const c = Boolean(emi >= 0.3*salary);
+
+  res.render("home-afford.ejs",{ a : a , b : b , c : c});
+})
 
 app.listen(port, ()=> {
     console.log(`Server running on port ${port}`);

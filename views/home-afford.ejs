@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    
+    <%- include("header.ejs") %>
+    
+
+  <!-- calcluator -->
+    <div class="container grid p-5">
+        <div class="calculator">
+            <h2 class="calcluatorName">Home Affordability Calculator</h2>
+            <form id="interestForm" method="POST" action="/home-afford/calculate" >
+                <label for="HomeAmt">House Amount : </label>
+                <input type="number" id="HomeAmt" onchange="hRangeHandler(event),hInputHandler(event)" oninput="hInputHandler(event), calculate(event)" value="5000000" name="HomeAmt" placeholder="Enter HomeAmt amount">
+                <br/> <input type="range"  value="5000000" oninput="hRangeHandler(event),hInputHandler(event)" onchange=" calculate(event)" id="rHomeAmt " min="1000" max="10000000" >
+                <br><br>
+                <label for="savings">Current Savings (for Down Payment):</label>
+                <input type="number" id="savings" name="savings" oninput="dInputHandler(event), calculate(event)" value="1000000" placeholder="Enter Total savings">
+                <br/><input type="range" name="rsavings" value="1000000" oninput="dRangeHandler(event)" onchange=" calculate(event)"  id="rsavings" min="1000" max="100000000" >
+                <br><br>
+
+                <label for="salary">Monthly Income (Include all sources):</label>
+                <input type="number" id="salary" name="salary" oninput="sInputHandler(event), calculate(event)" value="200000" placeholder="Monthly Total Income">
+                <br/><input type="range" name="rsalary" value="200000" oninput="sRangeHandler(event)" onchange=" calculate(event)"  id="rsalary" min="1000" max="100000000" >
+                <br><br>
+
+                <label for="emi">Monthly Investible Amount :</label>
+                <input type="number" id="emi" name="emi" oninput="eInputHandler(event),calculate(event)" value="100000" placeholder="Total Income - Monthly Expenses">
+                <br/><input type="range" name="remi" value="100000" oninput="eRangeHandler(event)" onchange=" calculate(event)"  id="remi" min="1000" max="100000000" >
+                <br><br>
+
+                <input type="submit" value="OK">
+
+                <hr>
+                <% if(locals.a && locals.b && locals.c){ %>
+                    <%= "Yes, you can afford to buy the house. Try to look for good options by not exceeding the amount of house and keeping others finances in check."%>
+                    <%= " We encourage to buy the house using home loan as you can avail tax benefits by home loan." %>
+                <% } else if(locals.a && locals.b) { %>
+                    <%= "Try to increase your savings by either cutting down expenses or increasing your income. Then you can definitely afford the house." %>
+                <% } else if(locals.c && locals.a) { %>
+                    <%= "Increase your bank savings for easier down payment of the house." %>
+                <% } else if(locals.c && locals.b) { %>
+                    <%= "Try to search for a house that is not more than 3 times of your yearly income. With this, you can clearly proceed with the decision of buying the house." %>
+                <% } else if(locals.a) { %>
+                    <%= "It is not recommended to buy the house at this stage. Try to increase your bank balance for an easier down payment along with the effort of increasing your monthly investible amount." %>
+                <% } else if(locals.b) { %>
+                    <%= "Hold on with the decision right now. You can definitely buy the house after increasing your monthly income and saving a greater percentage of your salary." %>
+                <% } else { %>
+                    <%= "Please think through the decision of buying the house at the current stage of your life. It will be better if you delay the decision for a certain time." %>
+                <% } %>
+                
+              </form>
+
+
+
+            <div class="container mt-5">
+                <div class="info">
+                     <h4>Home Affordability Calculator</h4> 
+                        <p>The 3 - 20 - 20 - 30 rule is a guideline often used by individuals considering purchasing a house using a home loan. It provides a structured approach to ensure financial stability and affordability throughout the home buying process.</p>
+                </div> 
+                <div class="info"> 
+                    <h4>Understanding the 3 - 20 - 20 - 30 Rule
+                    </h4>
+                    <span style="font-weight: bold;">3:</span>  This number represents the maximum percentage of your gross monthly income that should be allocated towards your monthly mortgage payment. This includes the principal, interest, property taxes, and homeowner's insurance (often referred to as PITI). Keeping this portion of your income within 3% helps ensure that your monthly mortgage payments remain manageable and do not overburden your budget.<br>
+                    <br><span style="font-weight: bold;">20:</span> The next aspect of the rule pertains to the down payment. It suggests that you should aim to provide a down payment of at least 20% of the total purchase price of the home. A higher down payment not only reduces the amount you need to borrow but also helps you secure more favorable loan terms, such as lower interest rates and avoiding private mortgage insurance (PMI).
+                    <br><br><span style="font-weight: bold;">20:</span> This part of the rule advises limiting other debt payments, such as credit card debt, auto loans, and student loans, to no more than 20% of your gross monthly income. By keeping your debt-to-income ratio at or below this threshold, you ensure that you have sufficient income to cover your housing expenses comfortably while also managing other financial obligations.
+                    <br><br><span style="font-weight: bold;">30:</span> The final component of the rule relates to the total housing expenses as a percentage of your gross monthly income. In addition to your mortgage payment, this includes other housing-related expenses such as utilities, maintenance, and association fees. The guideline suggests that these combined expenses should not exceed 30% of your gross monthly income. Adhering to this limit helps ensure that you have enough disposable income to cover other essential living expenses and save for the future.
+                    <br><br>
+
+                </div>
+                <div class="info"> 
+                    <h4>Benefits of Following the 3 - 20 - 20 - 30 Rule</h4>
+                    <p><span style="font-weight: bold;">Financial Stability:</span> By adhering to these guidelines, you establish a solid financial foundation that promotes stability and minimizes the risk of financial strain.</p>
+                    <p><span style="font-weight: bold;">Affordability:</span> Keeping housing costs within manageable limits ensures that you can comfortably afford your home without sacrificing other financial goals or lifestyle choices.</p>
+                    <p><span style="font-weight: bold;">Risk Mitigation:</span> A higher down payment reduces the risk of being underwater on your mortgage and provides a buffer against potential fluctuations in the housing market.</p>
+                    <p><span style="font-weight: bold;">Improved Loan Terms:</span> Meeting the recommended down payment threshold and maintaining a favorable debt-to-income ratio can result in more favorable loan terms and lower overall borrowing costs.</p>
+                    
+                </div> 
+                
+                <div class="info"> 
+                    <p>By following the 3 - 20 - 20 - 30 rule, prospective homebuyers can make informed decisions and ensure that homeownership remains a rewarding and sustainable long-term investment.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class=" calculatorList col-md-4 col-xl-3 mb-3"> <!-- added class for width -->
+            <h5 >Other Calculators</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2 pt-4"><a href="./stepup-sip" class="nav-link p-0 text-body-secondary">Step Up SIP Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./ssy" class="nav-link p-0 text-body-secondary">SSY Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./gst" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
+              <li class="nav-item mb-2"><a href="./lumpsum" class="nav-link p-0 text-body-secondary">Lumpsum Calculator</a></li>
+            </ul>
+          </div>
+
+    </div>
+
+    <%- include("footer.ejs") %>
+
+    <script type="module" src="acquisitions.js"></script>
+  <script>
+    // Data
+   // Data
+let amt = 100;
+let savings = 5;
+let salary = 10;
+let emi = 10;
+let M 
+
+
+
+let h = document.querySelector("#HomeAmt");
+h.addEventListener('change', (event) => {
+    event.preventDefault();
+
+  amt = event.target.value;
+});
+
+let d = document.querySelector("#savings");
+d.addEventListener('change', (event) => {
+  d = event.target.value;
+});
+
+let s = document.querySelector("#salary");
+s.addEventListener('change', (event) => {
+  salary = event.target.value;
+});
+
+let e = document.querySelector("#emi");
+e.addEventListener('change', (event) => {
+  emi = event.target.value;
+});
+
+let hRange = document.querySelector("#rHomeAmt")
+let dRange = document.querySelector("#rDp") 
+let sRange = document.querySelector("#rsalary") 
+let eRange = document.querySelector("#remi")
+
+
+function hRangeHandler(event){
+    event.preventDefault();
+
+  h.value = event.target.value;
+}
+function dRangeHandler(event){
+  d.value = event.target.value;
+}
+function sRangeHandler(event){
+  s.value = event.target.value;
+}
+function eRangeHandler(event){
+  e.value = event.target.value;
+}
+
+
+function hInputHandler(event){
+    event.preventDefault();
+
+  hRange.value = event.target.value;
+}
+function dInputHandler(event){
+  dRange.value = event.target.value;
+}
+function sInputHandler(event){
+  sRange.value = event.target.value;
+}
+function eInputHandler(event){
+  eRange.value = event.target.value;
+}
+
+
+
+  </script>
+</body>
+</html>
