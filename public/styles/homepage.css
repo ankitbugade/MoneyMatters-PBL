@@ -32,8 +32,15 @@
 .single-card-container :hover{
     scale: 1;
 }
+
+
 .single-card:hover{
     scale: 1.1;
+   
+    
+}
+.single-card:hover img {
+   opacity:1;
    
     
 }

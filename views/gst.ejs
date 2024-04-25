@@ -24,7 +24,7 @@
             <form id="interestForm">
                 <label for="principal">Amount:</label>
                 <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="25000" name="principal" placeholder="Enter principal amount">
-                <br/> <input type="range"  value="25000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="rPrincipal " min="500" max="1000000" >
+                <br/> 
                 <br><br>
                 <label for="rate">GST Rate :</label>
                 <select name="rate" id="rate" oninput="rInputHandler(event), calculate(event)">
@@ -116,11 +116,15 @@
         <div class=" calculatorList col-md-4 col-xl-3 mb-3"> <!-- added class for width -->
           <h5 >Other Calculators</h5>
           <ul class="nav flex-column">
-            <li class="nav-item mb-2 pt-4"><a href="./stepup-sip" class="nav-link p-0 text-body-secondary">Step Up SIP Calculator</a></li>
+            <li class="nav-item mb-2 pt-4"><a href="./stepup-sip" class="nav-link p-0 text-body-secondary">Step Up SIP </a></li>
             <li class="nav-item mb-2"><a href="./ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
             <li class="nav-item mb-2"><a href="./ssy" class="nav-link p-0 text-body-secondary">SSY Calculator</a></li>
             <li class="nav-item mb-2"><a href="./gst" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
-            <li class="nav-item mb-2"><a href="./lumpsum" class="nav-link p-0 text-body-secondary">Lumpsum Calculator</a></li>
+            <li class="nav-item mb-2"><a href="./lumpsum" class="nav-link p-0 text-body-secondary">Lumpsum </a></li>
+            <li class="nav-item mb-2"><a href="./home-loan" class="nav-link p-0 text-body-secondary">Home Loan </a></li>
+            <li class="nav-item mb-2"><a href="./fd" class="nav-link p-0 text-body-secondary">FD Calculator</a></li>
+            <li class="nav-item mb-2"><a href="./sip" class="nav-link p-0 text-body-secondary">SIP Calculator</a></li>
+            <li class="nav-item mb-2"><a href="./compound" class="nav-link p-0 text-body-secondary">Compound Interest</a></li>
           </ul>
         </div>
 

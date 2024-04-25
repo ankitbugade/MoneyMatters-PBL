@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/styles/main.css">
+    <title>Home Loan EMI Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="scr<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Home Loan EMI</title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+                <link rel="stylesheet" href="/styles/main.css">
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            </head>
+            
+            <body>
+            
+                
+              <!-- Title -->
+              <%- include("header.ejs") %>
+                                                                                                      
+              <!-- calcluator -->
+                <div class="container grid p-5">
+                    <div class="calculator">
+                        <h2 class="calcluatorName">Home Loan EMI Calculator</h2>
+                        <form id="interestForm">
+                            <label for="principal">Principal Amount:</label>
+                            <input type="number" id="principal" oninput="pInputHandler(event), calculate(event)" value="2500000" name="principal" placeholder="Enter principal amount">
+                            <br/> <input type="range"  value="2500000" oninput="pRangeHandler(event)" onchange=" calculate(event)" id="principal " min="100000" max="10000000" >
+                            <br><br>
+                            <label for="rate">Rate of Interest (% per annum):</label>
+                            <input type="number" id="rate" name="rate" oninput="rInputHandler(event), calculate(event)" value="9.4" placeholder="Enter rate of interest">
+                            <br/><input type="range" name="rRate" value="9.4" oninput="rRangeHandler(event)" onchange=" calculate(event)"  id="rRate" min="1" max="30" >
+                            <br><br>
+                            <label for="time">Loan tenure(years):</label>
+                            <input type="number" id="time" name="time" oninput="tInputHandler(event),calculate(event)" value="30" placeholder="Enter time in years">
+                            <br/><input type="range" name="rTime" value="30" oninput="tRangeHandler(event)" onchange=" calculate(event)"  id="rTime" min="1" max="40" >
+                            <br><br><hr>
+                            <div class="output">
+                              <label for="D">Monthly EMI : &#8377</label>
+                              <input readonly value="" class="result"  id="D" class="emi"/><br>
+                              <br>
+                              <label for="A">Invested Amount : &#8377</label>
+                              <input readonly value="" class="result"  id="A" class="principal"/><br>
+                              <br>
+                              <label for="B">Total Interest : &#8377</label>
+                              <input readonly value="" class="result" id="B" class="rate"/><br>
+                              <br>
+                              <label for="C">Total amount : &#8377</label>
+                              <input readonly value="" class="result" id="C" class="time"/>
+                            </div>
+            
+                          </form>
+            
+            
+                            <div class="chart" height="250" width="250">
+                                <canvas id="myChart" width="250" height="250"></canvas>
+                            </div>
+                        
+            
+                        <div class="container mt-5">
+                            <div class="info">
+                                 <h4> Home Loan EMI Calculator – Calculate Your Housing Loan EMI Online </h4> 
+                                 Given the high price of real estate in India, purchasing a house can be a challenging task without an external source of finance. An increasing number of prospective home buyers are opting for this type of credit to fund their house purchase. It is no surprise that housing credit grew by over 16% in FY18.<br/>
+                                 The primary responsibility of a potential borrower is to have an exact estimate of the EMI amount they are liable to pay. One can take advantage of a home loan EMI calculator to arrive at the precise number.
+                                 <br><br>
+                            </div> 
+                            <div class="info"> 
+                                <h4>What is a Home Loan EMI Calculator?</h4>
+                                An EMI, or Equated Monthly Installment, is a fixed amount that a borrower pays to the lender every month as part of their home loan repayment. It includes both the principal repayment and the interest payment. The EMI calculation considers the loan amount, tenure, and monthly interest rate. By dividing the total loan amount into equal installments, borrowers can manage their repayments effectively. Remember that timely EMI payments are crucial to maintaining a good credit history and ensuring a smooth home loan experience<br><br>
+                            </div>
+                            <div class="info"> 
+                                <h4>How can home loan EMI calculator help you?</h4>
+                                Equated Monthly Instalment or EMI is a fixed amount that a borrower must pay back to the lender every month till their tenure ends. 
+<br/>
+Calculating the EMI and its components can be a cumbersome exercise for first-time financers. A home loan EMI calculator India can do these complex calculations in no time, and save you from the trouble of doing it manually.
+                                <ol>
+                                    <li>Manually performing such complicated home loan EMI calculations can be both time-consuming and inaccurate. A saves the valuable time of prospective home buyers.</li>
+                                    <li>It gives you an accurate estimate, which is pivotal for financial planning. There is no probability of any inaccuracies or ambiguity</li>
+                                    <li>The EMI calculation procedure for each type of loan is different. For example, home loan EMI calculation is different from personal loan EMI. The EMI Calculator for Home Loanis specific only for home loans</li>
+                                </ol>
+                            </div> 
+                            <div class="info"> 
+                                <h4>The formula to determine home loan EMI amount</h4>
+                                All online calculators use a specific home loan EMI calculator formula to arrive at the exact EMI amount, which is –<br><br>
+                
+                                E = [P x R x (1+R) ^N] / [(1+R) ^N-1]<br><br>
+                
+                                In the above formula -<br>
+                                <ul>
+                                    <li>E is the EMI amount.</li>
+                                    <li>P is the Principle Amount.</li>
+                                    <li>R is the Rate of Interset.</li>
+                                    <li>N is the Loan tenure.</li>
+                                </ul><br>               
+                                For example, assume that a person avails a home loan worth Rs. 1 Crore for a tenure of 15 years at an agreed-upon interest rate of 12%. So, according to the formula –<br>
+                                E = [1, 00, 00,000 x 12 x (1+12) ^ 15] / [)1+12) ^ 20-1]<br>
+                                A home loan EMI calculator India will instantly help you compute the exact result, which in this case should be Rs. 1, 10,108.<br>
+                                Now, each loan EMI has two components – a principal component and an interest component. At the beginning of the tenure, the interest component is high, and the principal part is relatively low. The equation changes with every passing month, as the total interest to be paid reduces faster. So, with every EMI paid, the interest component decreases while the principal component increases.<br><br>
+                            </div>
+                            <div class="info"> 
+                                <h4>How to use online home loan EMI calculator?</h4>
+                                 The housing loan calculator India available here is very easy to use. <br>
+                                All you have to do is enter the loan amount, interest rate and the loan tenure in years. 
+                                <br/>
+                                The exact EMI value will be calculated and displayed within seconds.<br><br>
+                            </div>
+                            <div class="info"> 
+                                <h4>Advantages of using Home Loan EMI calculator</h4>
+                                There are numerous advantages of using the calculator available at this website. <br>
+                                <ul>
+                                    <li>It’s easy to use. All you have to do is insert a few necessary details, and the calculator will do the rest.</li>
+                                    <li>It’s free for everyone. You don’t even have to register to the website.</li>
+                                    <li>There is no limit on the number of times you can use it. So, you can quickly check the EMI for different home loan amounts.</li>
+                                </ul>
+                                As a debt category, the home loans corpus is expected to grow faster in the coming years. An online bank EMI calculator for a home loan is the go-to tool for all prospective debtors.
+                            </div>
+                        </div>
+                    </div>
+            
+                    
+            
+                    <div class=" calculatorList col-md-4 col-xl-3 mb-3"> <!-- added class for width -->
+                      <h5 >Other Calculators</h5>
+                      <ul class="nav flex-column">
+                        <li class="nav-item mb-2 pt-4"><a href="./stepup-sip" class="nav-link p-0 text-body-secondary">Step Up SIP </a></li>
+                        <li class="nav-item mb-2"><a href="./ppf" class="nav-link p-0 text-body-secondary">PPF Calculator</a></li>
+                        <li class="nav-item mb-2"><a href="./ssy" class="nav-link p-0 text-body-secondary">SSY Calculator</a></li>
+                        <li class="nav-item mb-2"><a href="./gst" class="nav-link p-0 text-body-secondary">GST Calculator</a></li>
+                        <li class="nav-item mb-2"><a href="./lumpsum" class="nav-link p-0 text-body-secondary">Lumpsum </a></li>
+                        <li class="nav-item mb-2"><a href="./home-loan" class="nav-link p-0 text-body-secondary">Home Loan </a></li>
+                        <li class="nav-item mb-2"><a href="./fd" class="nav-link p-0 text-body-secondary">FD Calculator</a></li>
+                        <li class="nav-item mb-2"><a href="./sip" class="nav-link p-0 text-body-secondary">SIP Calculator</a></li>
+                        <li class="nav-item mb-2"><a href="./compound" class="nav-link p-0 text-body-secondary">Compound Interest</a></li>
+                      </ul>
+                    </div>
+            
+                </div>
+            
+                
+                <%- include("footer.ejs")%>
+            
+                <script type="module" src="acquisitions.js"></script>
+              <script>
+                // Data
+               // Data
+            let amt = 100;
+            let rate = 5;
+            let time = 10;
+            let M 
+            let totalAmount
+            
+            
+            let p = document.querySelector("#principal");
+            p.addEventListener('change', (event) => {
+              amt = event.target.value;
+            });
+            
+            let r = document.querySelector("#rate");
+            r.addEventListener('change', (event) => {
+              rate = event.target.value;
+            });
+            
+            let t = document.querySelector("#time");
+            t.addEventListener('change', (event) => {
+              time = event.target.value;
+            });
+            
+            let pRange = document.querySelector("#rPrincipal")
+            let rRange = document.querySelector("#rRate") 
+            let tRange = document.querySelector("#rTime")
+            
+            let investedAmt = document.querySelector("#A")
+            let estRet = document.querySelector("#B") 
+            let totalValue = document.querySelector("#C")
+            let monthlyEMI = document.querySelector("#D")
+            
+            
+            
+            function pRangeHandler(event){
+              p.value = event.target.value;
+            }
+            function rRangeHandler(event){
+              r.value = event.target.value;
+            }
+            function tRangeHandler(event){
+              t.value = event.target.value;
+            }
+            
+            
+            function pInputHandler(event){
+              pRange.value = event.target.value;
+            }
+            function rInputHandler(event){
+              rRange.value = event.target.value;
+            }
+            function tInputHandler(event){
+              t.value = event.target.value;
+            }
+            
+            
+            amt = p.value;
+              rate = r.value;
+              time = t.value;
+            
+              amt = parseFloat(amt);
+              rate = parseFloat(rate);
+              time = parseFloat(time);
+              
+              let i = rate / 1200;
+              console.log(amt,rate,time);
+              //P × ({[1 + i]^n - 1} / i) × (1 + i)
+              let n = time*12;
+
+             let a = (Math.pow((1+i),(n)) * amt * i)/(Math.pow(1+i,n)-1);
+               totalAmount = amt;
+
+               let totalInterest = Math.round(a * n - amt );
+            
+              let investedamount = (Math.round(amt));
+            
+              monthlyEMI.value = (Math.round(a)).toLocaleString('en-in');
+              investedAmt.value = (investedamount).toLocaleString('en-in')
+              estRet.value = (totalInterest).toLocaleString('en-in')
+              totalValue.value = (Math.round(parseFloat(investedamount) + parseFloat(totalInterest))).toLocaleString('en-in');
+              
+            
+            function updateChart() {
+              const newData = {
+                labels: ['total Interest', 'principal amount'],
+                datasets: [{
+                  label: 'My Doughnut Chart',
+                  data: [totalInterest, totalAmount],
+                  backgroundColor: [
+                    'rgb(50, 50, 50)' ,
+                    'rgb(200, 200, 200)'
+                  ],
+                  borderWidth: 1
+                }]
+              };
+            
+              myChart.data = newData; 
+              myChart.update(); 
+            }
+            
+            
+            function calculate() {
+              event.preventDefault();
+              console.log("workingg",r.value,t.value,amt);
+              amt = p.value;
+              rate = r.value;
+              time = t.value;
+            
+              amt = parseFloat(amt);
+              rate = parseFloat(rate);
+              time = parseFloat(time);
+              
+              let i = rate / 1200;
+              console.log(amt,rate,time);
+              //P × ({[1 + i]^n - 1} / i) × (1 + i)
+              let n = time*12;
+
+             let a = (Math.pow((1+i),(n)) * amt * i)/(Math.pow(1+i,n)-1);
+               totalAmount = amt;
+
+               let totalInterest = Math.round(a * n - amt );
+            
+              let investedamount = (Math.round(amt));
+            
+              monthlyEMI.value = (Math.round(a)).toLocaleString('en-in');
+              investedAmt.value = (investedamount).toLocaleString('en-in')
+              estRet.value = (totalInterest).toLocaleString('en-in')
+              totalValue.value = (Math.round(parseFloat(investedamount) + parseFloat(totalInterest))).toLocaleString('en-in');
+              
+              updateChart();
+            }
+            
+            
+            const data = {
+              labels: ['total Interest', 'principal amount'],
+              datasets: [{
+                label: 'My Doughnut Chart',
+                data: [totalInterest, totalAmount],
+                backgroundColor: [
+                  'rgb(200, 200, 200)', 
+                  'rgb(50, 50, 50)' 
+                ],
+                borderWidth: 1
+              }]
+            };
+            
+            const config = {
+              type: 'doughnut',
+              data: data,
+              options: {
+                responsive: true,
+                plugins: {
+                  legend: {
+                    position: 'top',
+                  },
+                  title: {
+                    display: true,
+                  }
+                }
+              }
+            };
+            
+            
+            var myChart = new Chart(
+              document.getElementById('myChart'),
+              config
+            );
+              </script>
+            </body>
+            </html>
+            
+        </div>
+        
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>

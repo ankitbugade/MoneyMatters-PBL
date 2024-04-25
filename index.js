@@ -52,14 +52,32 @@ app.get("/stepup-sip",async(req,res)=>{
   console.log("step up sip");
 });
 
+app.get("/compound",async(req,res)=>{
+  res.render("compound.ejs");
+  
+  console.log("Compound");
+});
+
 app.get("/lumpsum",async(req,res)=>{
   res.render("lumpsum.ejs");
   
   console.log("lumpsum");
 });
 
+app.get("/coming",async(req,res)=>{
+  res.render("coming.ejs");
+  
+  console.log("coming");
+});
+
 app.get("/ppf",async(req,res)=>{
   res.render("ppf.ejs");
+  
+  console.log("lumpsum");
+});
+
+app.get("/home-loan",async(req,res)=>{
+  res.render("home-loan.ejs");
   
   console.log("lumpsum");
 });
